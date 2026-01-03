@@ -150,7 +150,7 @@ const Checkout = () => {
 
         setIsSubmitting(true);
         try {
-            const orderRes = await fetch("http://localhost:5000/create-order", {
+            const orderRes = await fetch("https://clomora.onrender.com/create-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ amount: finalTotal }),
@@ -176,7 +176,7 @@ const Checkout = () => {
                     contact: selectedAddress?.phone || "",
                 },
                 handler: async function (response: any) {
-                    const verify = await fetch("http://localhost:5000/verify-payment", {
+                    const verify = await fetch("https://clomora.onrender.com/verify-payment", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(response),
@@ -217,7 +217,7 @@ const Checkout = () => {
 
                             // Send WhatsApp Confirmation
                             try {
-                                await fetch("http://localhost:5000/confirm-order-whatsapp", {
+                                await fetch("https://clomora.onrender.com/confirm-order-whatsapp", {
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify({
@@ -264,7 +264,7 @@ const Checkout = () => {
     const handleCOD = async () => {
         setIsSubmitting(true);
         try {
-            const res = await fetch("http://localhost:5000/create-cod-order", {
+            const res = await fetch("https://clomora.onrender.com/create-cod-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -305,7 +305,7 @@ const Checkout = () => {
 
             // Send WhatsApp Confirmation
             try {
-                await fetch("http://localhost:5000/confirm-order-whatsapp", {
+                await fetch("https://clomora.onrender.com/confirm-order-whatsapp", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
