@@ -12,7 +12,20 @@ import fetch from "node-fetch";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+    cors({
+        origin: [
+            "https://clomora-ecommerce.vercel.app",
+            "http://localhost:5173"
+        ],
+        methods: ["GET", "POST"],
+        credentials: true
+    })
+);
+
+app.get("/", (req, res) => {
+    res.send("Clomora backend running 🚀");
+});
 
 const razorpay = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
